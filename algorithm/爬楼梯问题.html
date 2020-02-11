@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爬楼梯问题</title>
+</head>
+<body>
+    <script>
+        // 有一段楼梯台阶有11级台阶，以小明的脚力一步最多只能跨3级，请问小明登上这段楼梯有多少种不同的走法？
+
+        function jump(n){
+            if(n == 1 || n == 2) return n // 有1级台阶时：1种，有2级台阶时：2种
+            if(n == 3) return 4 // 有3级台阶时：4种（1+1+1/1+2/2+1/3）
+            if(n > 3) return jump(n-1)+jump(n-2)+jump(n-3)
+            // 有>3级台阶时
+            // 如有4级台阶时，
+            // 第一步走1级，剩下3级有jump(3)
+            // 第一步走2级，剩下2级有jump(2)
+            // 第一步走3级，剩下1级有jump(1)
+            // 因此jump(4)=jump(3)+jump(2)+jump(1)
+            // 以此类推
+        }
+        console.log(jump(11));  // 504
+        
+    </script>
+</body>
+</html>
