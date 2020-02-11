@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getAsciiArr(str){
+            var arr = []
+            for(let i = 0;i<str.length;i++){
+                arr.push(str.charCodeAt(i))
+            }
+            arr.sort(function(v1,v2) {
+                return v2-v1
+            })
+            return arr
+        }
+
+        console.log(getAsciiArr('hello world'));    
+        // [119, 114, 111, 111, 108, 108, 108, 104, 101, 100, 32]
+        
+    </script>
+</body>
+</html>
