@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目列表</title>
+    <!-- 引入样式表 -->
+    <link rel="stylesheet" href="projectList.css">
+    <!-- 引入jQuery和外部js -->
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="template-web.js"></script>
+    <script src="projectList.js"></script>
+</head>
+<body>
+    <main>
+        <h4>项目列表</h4>
+        <div class="dataList">
+            <!-- 表头 -->
+            <div class="title">
+                <div>序号</div>
+                <div>项目名称</div>
+                <div>建设单位</div>
+                <div>建设日期</div>
+                <div>项目状态</div>
+            </div>
+            <!-- 表内容:通过模板生成 -->
+        </div>
+    </main>
+
+    <!-- 模板 -->
+    <script id="list" type="text/template">
+        {{each data}}
+            <div class="row">
+                <div>{{$value.id}}</div>
+                <div>{{$value.name}}</div>
+                <div>{{$value.unit}}</div>
+                <div>{{$value.date}}</div>
+                <div>{{$value.state}}</div>
+            </div>
+        {{/each}}
+    </script>
+</body>
+</html>

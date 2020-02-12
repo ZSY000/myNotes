@@ -1,0 +1,35 @@
+main{
+    width: 700px;
+    margin: 10px auto;
+}
+h4{
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    color: #555;
+    margin: 0;
+}
+.dataList{
+    display: table;
+    width: 100%;
+    border: 1px solid #eee;
+}
+.dataList .title,
+.dataList .row{
+    display: table-row;
+}
+.dataList .title{
+    height: 30px;   
+    color: #fff;
+    background-color: #666;
+}
+.dataList .title div,
+.dataList .row div{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    height: 30px;
+}
+.dataList .row div{
+    font-size: 14px;
+}
