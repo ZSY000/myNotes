@@ -1,0 +1,63 @@
+/* 轮播图 */
+.container{
+    width: 1000px;
+    height: 500px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.sliceBox{
+    list-style: none;
+    width: 8000px;
+    height: 500px;
+    padding: 0;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.sliceBox li{
+    float: left;
+}
+
+/* 页码圆点 */
+.pagination{
+    width: 150px;
+    height: 20px;
+    list-style: none;
+    position: relative;
+    left: 50%;
+    bottom: 80px;
+    transform: translateX(-50%);
+}
+.pagination li{
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin: 4px;
+    border-radius: 50%;
+    background-color: #444;
+}
+.pagination .active{
+    background-color: #ddd;
+}
+
+/* 上下页箭头 */
+.prev,.next{
+    text-decoration: none;
+    font-size: 50px;
+    color: rgb(65, 64, 64);
+    font-weight: bold;
+    visibility: hidden;
+}
+.prev{
+    position: relative;
+    left: 40px;
+    bottom: 350px;
+}
+.next{
+    position: relative;
+    left: 880px;
+    bottom: 350px;
+}
+.show{
+    visibility: visible;
+}
