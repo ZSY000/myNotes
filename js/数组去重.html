@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组去重方法</title>
+</head>
+<body>
+    <script>
+        // 数组去重方法
+        var arr = [3,3,'a','a',{'a':1},{'a':2},[],[],NaN,NaN,null,null,undefined,undefined]
+        
+        // 法一：set
+        function fn1(arr) {
+            return [...new Set(arr)]
+        }
+
+        // 法二：indexOf循环去重(NaN无法去重)
+        function fn2(arr) {
+            var res = []
+            for (let i = 0; i < arr.length; i++) {
+                if(res.indexOf(arr[i]) == -1){
+                    res.push(arr[i])
+                }
+            }
+            return res
+        }
+
+        // 法三：indexOf+下标循环去重(NaN全部去除)
+        function fn3(arr) {
+            var res = []
+            for (let i = 0; i < arr.length; i++) {
+                if(arr.indexOf(arr[i]) == i){
+                    res.push(arr[i])
+                }
+            }
+            return res
+        }
+
+        // 法四：indexOf+Object键值对去重（不适用于部分引用数据类型）
+        function fn4(arr) {
+            var res = []
+            var obj = {}
+            for (let i = 0; i < arr.length; i++) {
+                if(!obj[arr[i]]){
+                    res.push(arr[i])
+                    obj[arr[i]] = true
+                }
+            }
+            return res
+        }
+
+        // 法五：对法三的改进，NaN也去重
+        function fn5(arr) {
+            var res = []
+            var flag = true    //控制NaN只存入一次
+            for(var i = 0;i<arr.length;i++){
+                if(res.indexOf(arr[i]) == -1){
+                    if(arr[i] != arr[i]){   // arr[i]是NaN
+                        if(flag == true){
+                            res.push(arr[i])
+                            flag = false
+                        }
+                    }else{
+                        res.push(arr[i])
+                    }
+                }
+            }
+            return res
+        }
+
+        console.log(fn1(arr));  // [3, "a", {…}, {…}, Array(0), Array(0), NaN, null, undefined]
+        console.log(fn2(arr));  // [3, "a", {…}, {…}, Array(0), Array(0), NaN, NaN, null, undefined]
+        console.log(fn3(arr));  // [3, "a", {…}, {…}, Array(0), Array(0), null, undefined]
+        console.log(fn4(arr));  // [3, "a", {…}, Array(0), NaN, null, undefined]
+        console.log(fn5(arr));  // [3, "a", {…}, {…}, Array(0), Array(0), NaN, null, undefined]
+        
+    </script>
+</body>
+</html>

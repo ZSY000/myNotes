@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求存在于数组arr1和arr2的但不存在于arr3的值</title>
+</head>
+<body>
+    <script>
+        // 求存在于数组arr1和arr2的但不存在于arr3的值
+        var arr1 = [2,3,3,5,8]
+        var arr2 = [3,4,8]
+        var arr3 = [1,9,12]
+        var set1 = new Set(arr1)
+        var set2 = new Set(arr2)
+        var set3 = new Set(arr3)
+        var res = [...set1].filter(item => set2.has(item))
+        res = res.filter(item => !set3.has(item))
+        console.log(res);
+        
+    </script>
+</body>
+</html>
