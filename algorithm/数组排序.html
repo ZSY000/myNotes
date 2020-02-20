@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组排序</title>
+</head>
+<body>
+  <script>
+    let arr = [4,3,7,5,0,2,3]
+
+    // 冒泡排序-升序
+    // 对当前还未排好序的范围内的全部数，不停地比较相邻的数，如果不满足排序要求，就交换位置，直到排好序
+    function bubbleSort(arr) {
+      let len = arr.length
+      for (let i = 0; i < len-1; i++) {
+        for (let j = 0; j < len-1-i; j++) {
+          if(arr[j] > arr[j+1]){
+            let temp = arr[j]
+            arr[j] = arr[j+1]
+            arr[j+1] = temp
+          }
+        }
+      }
+      return arr
+    }
+
+    // 选择排序-升序
+    // 每一趟在n-i+1(i=1,2,...n-1)个记录中选取关键字最小的记录作为有序序列中第i个记录 
+    function selectSort(arr) {
+      let len = arr.length
+      for (let i = 0; i < len-1; i++) {
+        let min = i
+        for (let j = i+1; j < len; j++) {
+          if(arr[j] < arr[min]) {
+            min = j
+          }
+        }
+        let temp = arr[i]
+        arr[i] = arr[min]
+        arr[min] = temp
+      }
+      return arr
+    }
+
+    // 快速排序-升序
+    // 从将待排序列找出一个基准值，通过比较大小分为两个序列，递归查找直到长度小于2
+    function quickSort(arr) {
+      if(arr.length < 2){
+        return arr
+      }
+      let mid = Math.floor(arr.length / 2)
+      let midVal = arr.splice(mid, 1)
+      let left = []
+      let right = []
+      for (let i = 0; i < arr.length; i++) {
+        arr[i] < midVal ? left.push(arr[i]) : right.push(arr[i])
+      }
+      return quickSort(left).concat(midVal, quickSort(right))
+    }
+
+    // [0, 2, 3, 3, 4, 5, 7]
+    console.log(bubbleSort(arr));
+    console.log(selectSort(arr));
+    console.log(quickSort(arr));
+    
+  </script>
+</body>
+</html>
