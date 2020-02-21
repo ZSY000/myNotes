@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>getBoundingClientRect</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      float: left;
+    }
+    .box1{
+      background-color: aqua;
+    }
+    .box2{
+      background-color: brown;
+      margin-top: 10px;
+      border: 10px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="box1">box1</div>
+  <div class="box2">box2</div>
+
+  <script>
+    let box2 = document.getElementsByClassName('box2')[0]
+    // getBoundingClientRect方法返回元素的大小及其相对于视口的位置。
+    // 返回值是一个 DOMRect 对象，这个对象是由该元素的 getClientRects() 方法返回的一组矩形的集合, 
+    // 即：是与该元素相关的CSS 边框集合返回值是一个 DOMRect 对象，这个对象是由该元素的 getClientRects() 方法返回的一组矩形的集合, 即：是与该元素相关的CSS 边框集合
+    
+    console.log(box2.getBoundingClientRect());
+    // DOMRect {x: 108, y: 18, width: 120, height: 120, top: 18, bottom: 138, left: 108, right: 228}
+  </script>
+</body>
+</html>
