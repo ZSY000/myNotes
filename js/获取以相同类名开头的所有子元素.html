@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取以相同类名开头的所有子元素</title>
+</head>
+<body>
+  <!-- 获取类名以mt开头的所有子元素 -->
+
+  <div id="app">
+    <div class="a">a</div>
+    <div class="mt">1</div>
+    <div class="b">
+      <div class="mtt">3</div>
+      <div class="mmt">4</div>
+    </div>
+    <div class="c">c</div>
+    <div class="mt">2</div>
+  </div>
+
+  <script>
+    let app = document.getElementById('app')
+    let nodes = []
+    let regexp = new RegExp(/^(mt)/)
+    function getMt(node) {
+      let ch = node.children
+      for (let i = 0; i < ch.length; i++) {
+        if(regexp.test(ch[i].className)){
+          nodes.push(ch[i])
+        }
+        if(ch[i].children){
+          getMt(ch[i])
+        }
+      }
+    }
+    getMt(app)
+    console.log(nodes);
+    
+  </script>
+</body>
+</html>
