@@ -1,0 +1,304 @@
+body{
+  margin: 0;
+}
+a{
+  text-decoration: none;
+  color: #ffffff;
+}
+ul{
+  list-style: none;
+  padding: 0;
+}
+.container{
+  width: 100%;
+}
+
+nav{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #FF7900;
+}
+
+/* 轮播图 */
+.banner{
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.sliceBox{
+  list-style: none;
+  width: 600%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.sliceBox li{
+  width: 16.66666%;
+  float: left;
+}
+.sliceBox li img{
+  width: 100%;
+  height: auto;
+}
+
+/* 页码圆点 */
+.pagination{
+  width: 70px;
+  height: 20px;
+  list-style: none;
+  position: relative;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+}
+.pagination li{
+  float: left;
+  width: 6px;
+  height: 6px;
+  margin: 4px;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.6;
+}
+@media all and (min-width: 700px){
+  .pagination{
+    width: 150px;
+    bottom: 40px;
+  }
+  .pagination li{
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+  }
+}
+.pagination .active{
+  opacity: 1;
+}
+
+.search{
+  width: 100%;
+  height: 45px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #F8F8F8;
+}
+.search .vip,
+.search .inp{
+  float: left;
+}
+.search .vip{
+  width: 28%;
+  height: 100%;
+  padding-left : 10px;
+}
+.search .vip a{
+  display: block;
+  width: 90%;
+  height: 75%;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 5px;
+  background: url(images/vip.jpg) no-repeat 5px 50%;
+  background-size: 23px 20px;
+  background-color: #FF7900;
+  padding-left: 25px;
+  box-sizing: border-box;
+}
+.search .inp{
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+.search .inp input{
+  width: 100%;
+  height: 75%;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 34px;
+  box-sizing: border-box;
+  border: none;
+  background-color: #F4F4F4;
+}
+.search .inp input::-webkit-input-placeholder { 
+  color: #D2D2D2;
+}
+.search .inp input:-moz-placeholder { 
+  color: #D2D2D2;
+}
+.search .inp a{
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+.search .inp a img{
+  width: 20px;
+  height: 20px;
+}
+.search .scan{
+  float: right;
+  width: 15%;
+  cursor: pointer;
+  margin-top: -10px;
+  font-size: 0.8rem;
+  background: url(images/scan.jpg) no-repeat center top;
+  background-size: 35px 35px;
+  padding-top: 40px;
+}
+.search .scan span{
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.count{
+  height: 35px;
+  padding-left: 15px;
+}
+.count p{
+  color: #000;
+  height: 35px;
+  line-height: 35px;
+  float: left;
+  font-size: 0.8rem;
+  margin: 0 10px 0 0;
+}
+.count p span{
+  font-size: 0.9rem;
+  color: #FF7900;
+}
+.count img{
+  width: 30px;
+  height: auto;
+  float: right;
+  margin-right: 12px;
+}
+.category{
+  width: 100%;
+  height: 40px;
+}
+.category ul{
+  width: 100%;
+  height: 40px;
+  margin: 0 0 0 15px;
+}
+.category ul li{
+  float: left;
+}
+.category ul li a{
+  display: block;
+  width: 50px;
+  height: 25px;
+  background-color: #FFA859;
+  border-radius: 13px;
+  font-size: 0.6rem;
+  text-align: center;
+  margin: 0 5px;
+  line-height: 25px;
+}
+.category ul li a.active{
+  background-color: #FF7900;
+}
+.booklist{
+  width: 100%;
+  background-color: #F4F4F4;
+  padding-top: 20px;
+  margin-top: -27px;
+}
+.booklist ul{
+  width: 100%;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+.booklist ul:last-child{
+  padding-bottom: 26px;
+  margin-bottom: 0;
+}
+.booklist ul li{
+  width: 28%;
+  height: 100%;
+  margin: 5px;
+  font-size: 0.6rem;
+}
+.booklist ul li img{
+  width: 100%;
+  height: auto;
+}
+.booklist ul li p{
+  font-size: 0.6rem;
+  width: 100%;
+  margin: 5px;
+}
+.booklist ul li .btn{
+  width: 100%;
+}
+.booklist ul li .btn span{
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  background-color: #FF7900;
+}
+.booklist ul li .btn img{
+  width: 18px;
+  height: 18px;
+  float: right;
+  margin: 0 3px;
+}
+.booklist ul li .price{
+  color: #FF7900;
+  line-height: 30px;
+}
+.booklist ul li .price small{
+  color: #9C9C9C;
+  text-decoration: line-through;
+  margin-left: 4px;
+}
+footer{
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  overflow: hidden;
+}
+footer p{
+  color: #333;
+  display: inline-block;
+  padding-left: 15px;
+  margin: 0;
+}
+footer p small{
+  color: #FF7900;
+}
+footer a{
+  display: inline-block;
+  width: 85px;
+  height: 30px;
+  background-color: #FF7900;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 30px;  
+  text-align: center;
+  margin-left: 30px;
+}
+footer .avail{
+  width: 90px;
+  height: 90px;
+  z-index: 100;
+  border-radius: 50%;
+  float: right;
+  position: relative;
+  right: -40px;
+  bottom: 0px;  
+  background: url(images/avail.jpg) no-repeat 7px 7px;
+  background-color: #FF7900;
+  background-size: 42% 42%;
+}
