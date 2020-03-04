@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>for和setTimeout</title>
+</head>
+
+<body>
+  <script>
+    for (var i = 0; i < 5; i++) {
+      setTimeout(() => {
+        console.log(i)
+      }, 0)
+    }
+    // 5 5 5 5 5
+
+    for (var i = 0; i < 5; i++) {
+      (function (i) {
+        setTimeout(() => {
+          console.log(i)
+        }, 0)
+      })(i)
+    }
+    // 0 1 2 3 4
+    // 闭包，每次循环保存自调用函数的变量i
+
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        console.log(i)
+      }, 0)
+    }
+    // 0 1 2 3 4
+    // for循环头部的let 声明还会有一个特殊的行为。
+    // 这个行为指出变量在循环过程中不止被声明一次，每次迭代都会声明。
+    // 随后的每个迭代都会使用上一个迭代结束时的值来初始化这个变量
+  </script>
+</body>
+
+</html>

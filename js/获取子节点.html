@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取子节点</title>
+</head>
+<body>
+  <div id="box">
+    <h6>123123</h6>
+    <ul>
+      <li>aaa</li>
+      <li>bbb</li>
+    </ul>
+    <p>haha</p>
+    <div id="c1">
+      <ul>
+        <li id="li1">ccc</li>
+        <li>ddd</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // 获取所有子元素或子文本元素
+    let num = 0
+    let arr = []
+    function getNum(node, type) {
+      for(let i=0;i<node.childNodes.length;i++){
+        let child = node.childNodes[i]
+        if(child.nodeType == type) {
+          if(child.nodeType == 3){
+            arr.push(child.nodeValue)
+          }else{
+            arr.push(child)
+          }
+          num ++
+        }
+        getNum(child, type)
+      }
+    }
+    getNum(document.getElementById('box'),3)
+    console.log(num)
+    console.log(arr)
+    
+  </script>
+</body>
+</html>
