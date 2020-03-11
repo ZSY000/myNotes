@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10进制与2进制的转换</title>
+</head>
+<body>
+  <script>
+    // 10进制转2进制
+    let s = []
+    function fn(num) {
+      res = Math.floor(num / 2) // 求商
+      y = num % 2 // 求余数
+      if(res != 0){
+        s.unshift(y)
+        fn(res)
+      } else {
+        s.unshift(y) 
+      }
+    }
+    fn(13)
+    s = parseInt(s.join(''))
+    console.log(s)  // 1101
+
+    // toString(xx) 也可以实现10进制转换成二进制
+
+    // 2进制转10进制
+    // console.log(parseInt(s,2))
+    
+    // 查找二进制中1连续出现最多的次数
+    var num = ''
+    function getMaxOne(er, regstr) {
+      var str = regstr
+      var reg = new RegExp(str,'g')
+      
+      if(er.match(reg) !== null){
+        str += '1'
+        getMaxOne(er, str)
+      } else {
+        num = str
+      }
+    }
+    getMaxOne(s.toString(), 1)
+    console.log(num.length-1)
+  </script>
+</body>
+</html>
