@@ -1,7 +1,10 @@
+// 公共配置
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')  // 自动打包html
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 分离css插件
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')  // 清除dist目录插件
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')  // 清除dist目录插件
+// const VueLoaderPlugin = require('vue-loader/lib/plugin') // 不好使？？
+const { VueLoaderPlugin } = require('vue-loader') // 处理vue
 
 module.exports = {
   // 入口entry，从哪个文件开始打包
@@ -9,17 +12,20 @@ module.exports = {
   // 出口output，打包到哪里
   output: {
     // 打包输出的目录（必须是绝对路径）
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '../dist'),
     // 打包后生成的文件名
     filename: 'js/bundle.js'  //把放入js文件中
   },
-  // 打包模式mode，development不压缩，production压缩
-  mode: 'development',
 
   // 配置模块加载规则
   // 默认webpack只认识json和js，不认识其他文件，如果需要打包其他文件，需要配置对应loader
   module: {
     rules: [
+      // 处理vue
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.css$/, // 正则表达式，用来匹配
         // css-loader让webpack能够识别解析css文件
@@ -62,6 +68,17 @@ module.exports = {
             }
           }
         ]
+      },
+      // 处理js高级语法
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ]
   },
@@ -72,6 +89,14 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/index.css' // 定义打包好的文件的存放路径和文件名（dist/css/index.css）
     }),
-    new CleanWebpackPlugin()
-  ]
+    new CleanWebpackPlugin(),
+    new VueLoaderPlugin()
+  ],
+
+  // 提取公共模块
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
 }
