@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    11
+    <p>123</p>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -11,5 +12,7 @@ export default {
 </script>
 
 <style>
-
+*{
+  color: aquamarine;
+}
 </style>

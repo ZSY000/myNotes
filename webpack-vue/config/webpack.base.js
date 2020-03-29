@@ -3,8 +3,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')  // 自动打包html
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 分离css插件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')  // 清除dist目录插件
-// const VueLoaderPlugin = require('vue-loader/lib/plugin') // 不好使？？
-const { VueLoaderPlugin } = require('vue-loader') // 处理vue
+const VueLoaderPlugin = require('vue-loader/lib/plugin') // 处理vue
 
 module.exports = {
   // 入口entry，从哪个文件开始打包
