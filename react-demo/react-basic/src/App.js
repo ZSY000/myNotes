@@ -1,37 +1,45 @@
-import React from 'react';
-import './App.css';
-import Clock from './Clock/clock'
-import Person from './Person/Person'
+import React from 'react'
+import './App.css'
+import Persons from './components/Persons/Persons'
+import Header from './components/Header/Header'
 
 class App extends React.Component {
   state = {
     person: [
-      { name:"Crazy", age:23 },
-      { name:"Lucy", age:20 },
-      { name:"Sherry", age:18 }
-    ]
+      { id:1, name:"Crazy", age:23 },
+      { id:2, name:"Lucy", age:20 },
+      { id:3, name:"Sherry", age:18 }
+    ],
+    showPerson: true
   }
 
-  // 按钮更新事件
-  switchBtn = (newName) => {
-    // console.log('hello')
+  // 更改名称
+  changeName = (event, id) => {
+    const personIndex = this.state.person.findIndex((p) => {
+      return p.id === id
+    })
+    
+    const person = this.state.person
+    person[personIndex].name = event.target.value
+
     this.setState({
-      person: [
-        { name:newName, age:233 },
-        { name:"Lucy", age:200 },
-        { name:"Sherry", age:188 }
-      ]
+      person: person
     })
   }
 
-  changeName = (e) => {
-    // console.log(e.target.value)
+  // 按钮切换
+  toggleBtn = () => {
+    let flag = this.state.showPerson
+    this.setState({showPerson: !flag})
+  }
+
+  // 点击删除
+  deleteItem = (index) => {
+    // const leftPerson = this.state.person
+    const leftPerson = [...this.state.person]
+    leftPerson.splice(index, 1)
     this.setState({
-      person: [
-        { name:e.target.value, age:23 },
-        { name:"Lucy", age:20 },
-        { name:"Sherry", age:18 }
-      ]
+      person: leftPerson
     })
   }
 
@@ -42,30 +50,29 @@ class App extends React.Component {
       border: '1px solid #bbb',
       padding: '5px 10px'
     }
+
+    const timeStyle = []
+    if (this.state.person.length<2) {
+      timeStyle.push('red')
+    }
+    if(this.state.person.length<1) {
+      timeStyle.push('bold')
+    }
+    
+    let showContent = null
+    if(this.state.showPerson){
+      showContent = <Persons 
+                      person={this.state.person}
+                      deleteItem={this.deleteItem}
+                      changeName={this.changeName}
+                    />
+    }
     return (
       <div className="App">
-      {/* 时钟每秒更新 */}
-        <Clock />
-{/*  */}
-        <button style={style} onClick={this.switchBtn.bind(this, 'Suzen')}>点击更新</button>
+        <Header btnStyle={style} btnClick={this.toggleBtn} pStyle={timeStyle}/>
 
-        <Person 
-          name={this.state.person[0].name} 
-          age={this.state.person[0].age} 
-          myclick={this.switchBtn.bind(this, 'Waddor')} 
-          mychange={this.changeName}
-        />
-        <Person 
-          name={this.state.person[1].name} 
-          age={this.state.person[1].age} 
-        />
-        <Person 
-          name={this.state.person[2].name} 
-          age={this.state.person[2].age} 
-        />
-        <Person name="Lala" age="22">
-          很高兴认识大家！
-        </Person>
+        {/* 点击切换内容 */}
+        {showContent} 
       </div>
     )
   }

@@ -2,3 +2,9 @@
   text-align: center;
   color: rgb(26, 57, 122);
 }
+.red{
+  color: #f00
+}
+.bold{
+  font-weight: bolder;
+}
