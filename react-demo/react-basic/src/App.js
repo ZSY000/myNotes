@@ -4,15 +4,18 @@ import Persons from './components/Persons/Persons'
 import Header from './components/Header/Header'
 
 class App extends React.Component {
-  state = {
-    person: [
-      { id:1, name:"Crazy", age:23 },
-      { id:2, name:"Lucy", age:20 },
-      { id:3, name:"Sherry", age:18 }
-    ],
-    showPerson: true
+  constructor (props) {
+    super(props)
+    this.state = {
+      person: [
+        { id:1, name:"Crazy", age:23 },
+        { id:2, name:"Lucy", age:20 },
+        { id:3, name:"Sherry", age:18 }
+      ],
+      showPerson: true
+    }
   }
-
+  
   // 更改名称
   changeName = (event, id) => {
     const personIndex = this.state.person.findIndex((p) => {
