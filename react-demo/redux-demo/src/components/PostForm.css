@@ -1,0 +1,29 @@
+.formStyle{
+  width: 60%;
+  margin: auto;
+  text-align: left;
+}
+.formStyle label{
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  padding-right: 10px;
+}
+.formStyle input[type="text"], .formStyle textarea{
+  width: 70%;
+  margin-top: 20px;
+}
+.formStyle input[type="text"]{
+  height: 28px;
+}
+.formStyle textarea{
+  height: 50px;
+}
+.formStyle input[type="submit"]{
+  display: block;
+  margin: 10px auto;
+  padding: 7px 13px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+}

@@ -1,0 +1,15 @@
+.box{
+  width: 60%;
+  margin: 10px auto;
+  text-align: left;
+  border: 1px solid #ddd;
+  padding: 0 20px;
+  box-shadow: 0 2px 3px #ccc;
+}
+.box p{
+  text-indent: 2em;
+  margin-top: 0px;
+}
+.box h3{
+  margin-bottom: 0px;
+}
