@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import './PostForm.css'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import { createPost } from '../actions/postAction'
 
-export default class PostForm extends Component {
+class PostForm extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -25,15 +28,9 @@ export default class PostForm extends Component {
         title: this.state.title,
         body: this.state.body
       }
-      fetch('http://jsonplaceholder.typicode.com/posts', {
-        method: 'post',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: data
-      }).then((res) => res.json()).then((res) => {
-        console.log(res)
-      })
+
+      // 触发action
+      this.props.createPost(data)
     }
   }
   render() {
@@ -48,3 +45,10 @@ export default class PostForm extends Component {
     )
   }
 }
+
+PostForm.propTypes = {
+  createPost: PropTypes.func.isRequired
+}
+
+// View不需要改变，所以第一个参数为null
+export default connect(null, { createPost })(PostForm)

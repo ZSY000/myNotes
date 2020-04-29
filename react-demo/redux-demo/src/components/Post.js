@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/postAction'
 import './Post.css'
 import Postform from './PostForm'
 
-export default class Post extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: []
+class Post extends Component {
+  componentDidMount () {
+    this.props.fetchPosts()
+  }
+
+  componentWillReceiveProps(nextProp) {
+    if (nextProp.newPost) {
+      this.props.posts.unshift(nextProp.newPost)
     }
   }
-  componentDidMount () {
-    fetch('http://jsonplaceholder.typicode.com/posts')
-    .then((res) => res.json())
-    .then((res) => {
-      this.setState({
-        data: res
-      })
-    })
-  }
+
   render() {
-    const dataList = this.state.data.splice(0,10).map((item) => (
+    const dataList = this.props.posts.splice(0,10).map((item) => (
         <div key={item.id} className='box'>
           <h3>{item.title}</h3>
           <p>{item.body}</p>
@@ -36,3 +34,16 @@ export default class Post extends Component {
     )
   }
 }
+
+// 定义属性类型
+Post.propTypes = {
+  fetchPosts: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired
+}
+
+const mapStateToProps = state => ({
+  posts: state.posts.data,
+  newPost: state.posts.item
+})
+
+export default connect(mapStateToProps, { fetchPosts })(Post)
